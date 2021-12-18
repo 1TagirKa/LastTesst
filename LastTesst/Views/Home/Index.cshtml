@@ -1,0 +1,178 @@
+@model dynamic
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "_Layout";
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="~/css/home.css">
+}
+<!-- Intro -->
+<div class="intro">
+    <div class="intro_lamp_img"><img src="~/images/intro/lamp.png" alt=""></div>
+    <div class="container">
+        <div class="intro_elements">
+            <ul class="list_of_elements">
+                <li class="intro_overhead">
+                    <p>Best Furniture For Your Castle....</p>
+                </li>
+                <li class="intro_head">
+                    <h2>New Furniture Collection Trends in 2021</h2>
+                </li>
+                <li class="intro_text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus quibusdam doloribus cumque fugiat itaque nisi voluptate dolorem adipisci quaerat ducimus!</p>
+                </li>
+                <a href="/Products/Index"><li class="intro_button"><input type="submit" value="Shop Now"></li></a>
+            </ul>
+        </div>
+        <div class="intro_sofa_img"><img src="~/images/intro/sofa.png" alt=""></div>
+    </div>
+    </div>
+
+<div class="products">
+    <div class="container">
+        <h1 class="lg-title">Trending Products</h1>
+        <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
+
+        <div class="product-items">
+            <!-- single product -->
+            @for (int i = 0; i < 8; i++)
+            {
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="~/@Model[i].Image" alt="product image">
+                        </div>
+                        <div class="product-btns">
+                            <button type="button" class="btn-cart"> add to cart
+                                <span><i class = "fas fa-plus"></i></span>
+                            </button>
+                            <a href="/ProductPage/Index/@Model[i].Id"><button type="button" class="btn-buy"> buy now
+                                <span><i class = "fas fa-shopping-cart"></i></span>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">lifestyle</h2>
+                            <div class="rating">
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "far fa-star"></i></span>
+                            </div>
+                        </div>
+                        <a href="#" class="product-name">@Model[i].Name</a>
+                        @if (@Model[i].Discount)
+                        {
+                            <p class="product-price product-price-first">$ @Model[i].Price</p>
+                            <p class="product-price">$ @Model[i].Discount_price</p>
+                        }
+                        else
+                        {
+                            <p class="product-price">$ @Model[i].Price</p>
+                        }
+                    </div>
+                    @if (@Model[i].Discount)
+                    {
+                        <div class="off-info">
+                            <h2 class="sm-title">@Model[i].Amount_of_discount% off</h2>
+                        </div>
+                    }
+                </div>
+                <!-- end of single product -->
+            }
+        </div>
+    </div>
+</div>
+
+<div class="shop_now">
+    <div class="shop_now_elements">
+        <pre class="shop_now_text">Get Leatest Update By Subscribe 
+0ur Newslater</pre>
+        <a href="/Products/Index"><li class="intro_button"><input type="submit" value="Shop Now"></a>
+    </div>
+</div>
+
+<div class="firms">
+        <img src="~/images/firms/firms.png" alt="">
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="section_header">
+                <h2 class="section_title">Leatest Blog</h2>
+            </div>
+
+            <div class="about">
+                <div class="about_item">
+                    <div class="about_img">
+                        <img src="~/images/articles/trends1.png" alt="">
+                    </div>
+                    <div class="about_text">Top esssential Trends in 2021</div>
+                </div>
+                <div class="about_item">
+                    <div class="about_img">
+                        <img src="~/images/articles/trends2.png" alt="">
+                    </div>
+                    <div class="about_text">Top esssential Trends in 2021</div>
+                </div>
+                <div class="about_item">
+                    <div class="about_img">
+                        <img src="~/images/articles/trends3.png" alt="">
+                    </div>
+                    <div class="about_text">Top esssential Trends in 2021</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container_footer">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

@@ -1,0 +1,38 @@
+@model LastTesst.Models.LoginModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="~/css/login.css">
+}
+
+
+<main class="main">
+    <div class="center">
+        <h1>Login</h1>
+        <form asp-controller="Login" asp-action="Login" method="post">
+            <div class="txt_field">
+                <input asp-for="Email" type="text" required>
+                <span></span>
+                <label>Email Address</label>
+            </div>
+            <div class="txt_field">
+                <input asp-for="Password" type="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="pass">Forgot Password?</div>
+            <input type="submit" value="Sign up">
+            <div class="signup_link">
+                Don’t have an Account?
+                <a asp-controller="Register" asp-action="Index">Create account</a>
+            </div>
+        </form>
+    </div>
+</main>

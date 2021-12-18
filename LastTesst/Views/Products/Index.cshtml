@@ -1,0 +1,74 @@
+@model dynamic
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "_Layout";
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="~/css/products.css">
+}
+
+<div class="products">
+    <div class="container">
+        <h1 class="lg-title">Our Product Range</h1>
+        <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
+
+        <div class="product-items">
+            <!-- single product -->
+            @for (int i = 0; i < @Model.Count; i++)
+            {
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="~/@Model[i].Image" alt="product image">
+                        </div>
+                        <div class="product-btns">
+                            <a asp-controller="Basket" asp-action="AddProduct" asp-route-id="@Model[i].Id"><button  type="button" class="btn-cart"> add to cart
+                                <span><i class = "fas fa-plus"></i></span>
+                            </button></a>
+                            <a href="/ProductPage/Index/@Model[i].Id">
+                                <button type="button" class="btn-buy"> buy now
+                                    <span><i class = "fas fa-shopping-cart"></i></span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">lifestyle</h2>
+                            <div class="rating">
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "far fa-star"></i></span>
+                            </div>
+                        </div>
+                        <a href="#" class="product-name">@Model[i].Name</a>
+                        @if (@Model[i].Discount)
+                        {
+                            <p class="product-price product-price-first">$ @Model[i].Price</p>
+                            <p class="product-price">$ @Model[i].Discount_price</p>
+                        }
+                        else
+                        {
+                            <p class="product-price">$ @Model[i].Price</p>
+                        }
+                    </div>
+                    @if (@Model[i].Discount)
+                    {
+                        <div class="off-info">
+                            <h2 class="sm-title">@Model[i].Amount_of_discount% off</h2>
+                        </div>
+                    }
+                </div>
+                <!-- end of single product -->
+            }
+        </div>
+    </div>
+</div>

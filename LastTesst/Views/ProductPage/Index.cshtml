@@ -1,0 +1,43 @@
+@model dynamic
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "_Layout";
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="~/css/product.css">
+}
+
+<div class="product">
+        <div class="container_product">
+            <div class="cover">
+                <img class="product_img" src="~/@Model.Image" alt="">
+            </div>
+            <div class="content">
+                <div class="nav">
+                    <span><i class='fab fa-sistrix' style='font-size:24px'></i></span>
+                </div>
+                <div class="content-body">
+                    <div class="pages">
+                        <span class="active"><b>01</b></span>
+                        <span>02</span>
+                        <span>03</span>
+                        <span>04</span>
+                    </div>
+                    <div class="black-label">
+                        <span class="title_product"><b>@Model.Name</b></span>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur corporis modi aliquam, quis laborum a nam fugit ducimus? Molestiae repellendus adipisci ea aut eligendi nemo velit itaque, illum placeat? Velit.
+                        </p>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur corporis modi aliquam, quis laborum a nam fugit ducimus? Molestiae repellendus adipisci ea aut eligendi nemo velit itaque, illum placeat? Velit. Lorem ipsum, dolor
+                            sit amet consectetur adipisicing elit. </p>
+                        <div class="prix">
+                            <span><b>$@Model.Price</b></span>
+                            <span class="crt">Add to card</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

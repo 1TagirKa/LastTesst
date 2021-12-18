@@ -1,0 +1,96 @@
+@using LastTesst.Helper
+@model dynamic
+
+@{
+	int totalPriceWith = 0;
+	int totalPriceWithout = 0;
+	for (int i = 0; i < Model.Length; i++)
+	{
+		totalPriceWith += Model[i].Discount_price;
+		totalPriceWithout += Model[i].Price;
+	}
+	int result = totalPriceWithout - totalPriceWith;
+}
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@section styles
+{
+	<link rel="stylesheet" href="~/css/basket.css">
+}
+
+<div class="container_basket">
+
+	<h1>Shopping Cart</h1>
+
+	<div class="cart">
+		<div class="products">
+			@for (int i = 0; i < @Model.Length; i++)
+			{
+				<div class="product">
+					
+					<img src="~/@Model[i].Image">
+
+					<div class="product-info">
+						
+						<h3 class="product-name">@Model[i].Name</h3>
+
+						<h4 class="product-price">@Model[i].Discount_price $</h4>
+
+						<h4 class="product-offer">@Model[i].Amount_of_discount %</h4>
+
+						<p class="product-quantity">Qnt: <input value="1" name="">
+
+						<p class="product-remove">
+
+							<i class="fa fa-trash" aria-hidden="true"></i>
+
+							<span class="remove">Remove</span>
+
+						</p>
+
+					</div>
+
+				</div>
+			}
+
+		</div>
+
+		<div class="cart-total">
+
+			<p>
+
+				<span>Total Price</span>
+
+				<span>@totalPriceWith $</span>
+
+			</p>
+
+			<p>
+
+				<span>Number of Items</span>
+
+				<span>@Model.Length</span>
+
+			</p>
+
+			<p>
+
+				<span>You Save</span>
+
+				<span>$ @result</span>
+
+			</p>
+
+			<a href="#">Proceed to Checkout</a>
+
+		</div>
+
+	</div>
+
+</div>
+
+

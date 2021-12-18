@@ -1,0 +1,80 @@
+﻿@using LastTesst.Cookie
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @RenderSection("styles")
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <title>@ViewBag.Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="title">
+        <div class="container">
+            <div class="title_inner">
+                <div class="contact_information">
+                    <img class="contact_inf_img" src="~/images/header/email.svg" alt="">
+                    <p class="contact_inf_item">mhhasanul@gmail.com</p>
+                    <img class="contact_inf_img" src="~/images/header/phone_call.svg" alt="">
+                    <p class="contact_inf_item">(12345)67890</p>
+                </div>
+                <div class="personal_items">
+                    <p class="personal_item">English</p>
+                    <p class="personal_item">USD</p>
+                    <a asp-controller="Login" asp-action="LogOut" class="personal_item">Log out</a>
+                    <img src="~/images/header/user.svg" alt="">
+                    <p class="personal_item">Whishlist</p>
+                    <img src="~/images/header/heart.svg" alt="">
+                    <img src="~/images/header/basket.svg" alt="" class="personal_item">
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="header_inner_second">
+                <div class="second_header_elements">
+                    <nav class="navigation">
+                        <div class="header_logo">Hekto</div>
+                        <div class="navigation_items">
+                            <a asp-controller="Home" asp-action="Index" class="navigation_link">Home</a>
+                            @if (Cookies.getCookie("email") == "")
+                            {
+                                <a asp-controller="Login" asp-action="Index" class="navigation_link">Account</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Profile" asp-action="Index" class="navigation_link">Account</a>
+                            }
+                            <a asp-controller="Products" asp-action="Index" class="navigation_link">Products</a>
+                            <a class="navigation_link" href="#">About</a>
+                            @if (Cookies.getCookie("email") == "")
+                            {
+                                <a asp-controller="Login" asp-action="Index" class="navigation_link">Basket</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Basket" asp-action="Index"class="navigation_link" >Basket</a>
+                            }
+                        </div>
+                    </nav>
+                    <div class="search_product">
+                        <input class="search_input" type="text">
+                        <button class="search_button">
+                            <img class="search_button_img" src="~/images/header/magnifier.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+
+<footer>
+</footer>
+</body>
+</html>
